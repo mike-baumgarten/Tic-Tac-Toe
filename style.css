@@ -6,6 +6,7 @@
     float: left;
     height: 100px;
     width: 100px;
+    line-height: 100px;
 }
 .row {
     margin: 0 auto;
