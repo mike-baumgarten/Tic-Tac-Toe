@@ -14,7 +14,17 @@ let playersTurn = 'X';
 /*Winning Player*/
 let winningPlayer = null;
 
-
+/*Win Conditions*/
+const winConditions = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7]
+];
 
 for (let i = 0; i < cells.length; i++) {
 
@@ -37,12 +47,12 @@ function newGame() {
 };
 
 function switchTurn() {
-    if (winningPlayer != null) {
-        if (winningPlayer = 'X') {
-            insertMessage(xWin);
-        } else {
-            insertMessage(oWin);
-        };
+    if (checkWin()) {
+        if(playersTurn = 'X'){
+            insertMessage(xWin)
+        }else{
+            insertMessage(oWin)
+        }
     } else if (playersTurn == 'X') {
         playersTurn = 'O';
     }else {
@@ -71,9 +81,26 @@ function clickedCell(cellID){
 
 
 function checkRow (a, b, c) {
-    let win = false;
     if(clickedCell(a) != '' && clickedCell(a) == clickedCell(b) && clickedCell(b) == clickedCell(c)){
-        win = true;
+        return true;
+    }else{
+        return false;
     }
-    return win;
 }
+
+/* function that takes the checkRow function and loops through winningConditions variable*/
+
+function checkWin() {
+    totalMoves++
+    for (let i = 0; i<= 7; i++) {
+        let winCondition = winConditions[i];
+        let a = winCondition[0];
+        let b = winCondition[1];
+        let c = winCondition[2];
+        if(checkRow(a,b,c)){
+             return true;
+        }
+    };
+
+}
+
