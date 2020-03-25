@@ -50,12 +50,12 @@ function switchTurn() {
     };
 };
 
-function cellClicked(cellID) {
+function cellClicked() {
 
-    if (playersTurn == 'X' || cellID.innerText == '') {
+    if (playersTurn == 'X') {
         event.target.textContent = 'X';
         switchTurn();
-    } else if(playersTurn == 'O' || cellID.innerText == ''){
+    } else if(playersTurn == 'O'){
         event.target.textContent = 'O';
         switchTurn();
     }else {
@@ -64,9 +64,9 @@ function cellClicked(cellID) {
     
 };
 
-function clickedCell(cellID){
-    return document.getElementById(cellID).innerText;
-}
+// function clickedCell(cellID){
+//     return document.getElementById(cellID).innerText;
+// }
 
 // function checkWin () {
 //     totalMoves++
