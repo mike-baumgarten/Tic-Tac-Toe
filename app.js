@@ -64,38 +64,15 @@ function cellClicked() {
     
 };
 
-// function clickedCell(cellID){
-//     return document.getElementById(cellID).innerText;
-// }
+function clickedCell(cellID){
+    return document.getElementById(cellID).innerText;
+}
 
-// function checkWin () {
-//     totalMoves++
-//     if (
-//         (checkRow(1, 2, 3) ||
 
-//         checkRow(4, 5, 6) ||
-
-//         checkRow(7, 8, 9) ||
-
-//         checkRow(1, 4, 7) ||
-
-//         checkRow(2, 5, 8) ||
-
-//         checkRow(3, 6, 9) ||
-
-//         checkRow(1, 5, 9) ||
-
-//         checkRow(3, 5, 7)) = true
-//     ){
-//         winningPlayer = playersTurn
-//     }elseif(totalMoves > 8 ){
-//         winningPlayer = 'draw';
-//     }
-// };
 
 function checkRow (a, b, c) {
     let win = false;
-    if(clickedCell(a) == clickedCell(b) && clickedCell(b) == clickedCell(c)){
+    if(clickedCell(a) != '' && clickedCell(a) == clickedCell(b) && clickedCell(b) == clickedCell(c)){
         win = true;
     }
     return win;
