@@ -107,5 +107,6 @@
         document.getElementById('message').innerText = '';
         totalMoves = 0;
         gameState = false;
+        playersTurn = 'X';
     }
 })();
