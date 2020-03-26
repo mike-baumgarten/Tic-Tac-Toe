@@ -1,6 +1,7 @@
 let cells = document.querySelectorAll('.row > div');
 
-/* text variables*/
+/*Game State variable for resetting the game*/
+let gameState = false;
 
 /* Total Moves count */
 let totalMoves = 0;
@@ -30,24 +31,13 @@ for (let i = 0; i < cells.length; i++) {
 };
 
 
-function insertMessage(message) {
-    document.getElementById('message').innerText = message;
-};
-
-
-function newGame() {
-    totalMoves = 0;
-
-    for (let h = 0; h <= 8; h++) {
-        resetGame(h);
-    }
-};
-
 function switchTurn() {
     if(totalMoves > 7 ){
         document.getElementById('message').innerText = 'Draw'
+        gameState = true;
     }else if (checkWin()) {
         document.getElementById('message').innerText = 'Player ' + playersTurn + ' wins!'
+        gameState = true;
     } else if (playersTurn == 'X') {
         playersTurn = 'O';
     }else {
@@ -56,8 +46,10 @@ function switchTurn() {
 };
 
 function cellClicked() {
-    
-    if (playersTurn == 'X') {
+    if(gameState == true){
+        resetGame();
+    }
+    else if (playersTurn == 'X') {
         event.target.textContent = 'X';
         switchTurn();
     } else if(playersTurn == 'O'){
@@ -99,3 +91,11 @@ function checkWin() {
 
 }
 
+function resetGame(){
+    for (let i = 1; i < 10; i++){
+        document.getElementById(i).innerText = ''
+    };
+    document.getElementById('message').innerText = '';
+    totalMoves = 0;
+    gameState = false;
+}
