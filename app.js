@@ -36,11 +36,11 @@
     If it's true it displays the winning message.  If not it switches the playersTurn variable to the next user*/
     function switchTurn() {
         document.getElementById('message').innerText = '';
-        if (totalMoves > 7) {
-            document.getElementById('message').innerText = 'Draw'
-            gameState = true;
-        } else if (checkWin()) {
+        if (checkWin()) {
             document.getElementById('message').innerText = 'Player ' + playersTurn + ' wins!'
+            gameState = true;
+        } else if (totalMoves > 8) {
+            document.getElementById('message').innerText = 'Draw'
             gameState = true;
         } else if (playersTurn == 'X') {
             playersTurn = 'O';
@@ -107,6 +107,6 @@
         document.getElementById('message').innerText = '';
         totalMoves = 0;
         gameState = false;
-        playersTurn = 'X';
+        playersTurn = 'X'
     }
 })();
