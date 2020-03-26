@@ -1,9 +1,6 @@
 let cells = document.querySelectorAll('.row > div');
 
 /* text variables*/
-let xWin = 'Player X won!';
-let oWin = 'Player O won!';
-let draw = 'Draw';
 
 /* Total Moves count */
 let totalMoves = 0;
@@ -47,12 +44,10 @@ function newGame() {
 };
 
 function switchTurn() {
-    if (checkWin()) {
-        if(playersTurn = 'X'){
-            insertMessage(xWin)
-        }else{
-            insertMessage(oWin)
-        }
+    if(totalMoves > 7 ){
+        document.getElementById('message').innerText = 'Draw'
+    }else if (checkWin()) {
+        document.getElementById('message').innerText = 'Player ' + playersTurn + ' wins!'
     } else if (playersTurn == 'X') {
         playersTurn = 'O';
     }else {
@@ -61,7 +56,7 @@ function switchTurn() {
 };
 
 function cellClicked() {
-
+    
     if (playersTurn == 'X') {
         event.target.textContent = 'X';
         switchTurn();
@@ -98,7 +93,7 @@ function checkWin() {
         let b = winCondition[1];
         let c = winCondition[2];
         if(checkRow(a,b,c)){
-             return true;
+            return true;
         }
     };
 
